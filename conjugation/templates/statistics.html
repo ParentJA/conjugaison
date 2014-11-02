@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block base-head %}
+    <style>
+        #message {
+            display: none;
+        }
+
+        #graph {
+            margin-top: 15px;
+        }
+    </style>
+{% endblock %}
+
+{% block base-content %}
+    <div class="row">
+        <div class="col-lg-offset-3 col-lg-6 col-md-offset-3 col-md-6">
+            <h1 class="text-center">Statistics</h1>
+            <ul class="nav nav-tabs">
+                <li id="infinitives-tab" class="active">
+                    <a href="#">Infinitives</a>
+                </li>
+                <li id="pronouns-tab">
+                    <a href="#">Pronouns</a>
+                </li>
+                <li id="total-tab">
+                    <a href="#">Total</a>
+                </li>
+            </ul>
+            <p id="message">
+                You don't have any data yet.
+            </p>
+            <div id="graph"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base-modals %}
+
+{% endblock %}
+
+{% block base-scripts %}
+    <script src="{{ STATIC_URL }}js/highcharts.js"></script>
+    <script>
+        var positive_data = $.parseJSON('{{ correct|safe|addslashes }}');
+        var negative_data = $.parseJSON('{{ incorrect|safe|addslashes }}');
+    </script>
+    <script src="{{ STATIC_URL }}js/statistics.js"></script>
+{% endblock %}

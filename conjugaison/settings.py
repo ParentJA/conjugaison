@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = (
+DEFAULT_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,6 +37,18 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
+THIRD_PARTY_APPS = (
+    'django_nose',
+    'annoying',
+)
+
+LOCAL_APPS = (
+    'conjugaison',
+    'conjugation',
+)
+
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -57,10 +69,7 @@ WSGI_APPLICATION = 'conjugaison.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': {}
 }
 
 # Internationalization
@@ -81,3 +90,39 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+from django.contrib.messages import constants as message_constants
+
+# Changing message tags to conform with Bootstrap 'alert' component class names...
+MESSAGE_TAGS = {
+    message_constants.DEBUG: 'debug',
+    message_constants.INFO: 'info',
+    message_constants.SUCCESS: 'success',
+    message_constants.WARNING: 'warning',
+    message_constants.ERROR: 'danger'
+}
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'conjugaison.backends.GoogleBackend',
+)
+
+GOOGLE_CLIENT_ID = '381585654432-ga3ape4rvuibcr68ok4c1breif77cim9.apps.googleusercontent.com'
+GOOGLE_CLIENT_SECRET = '5vxxgnUHkKnmTOp7j8Y81lfq'
+GOOGLE_REDIRECT_URI = 'http://conjugate-me.herokuapp.com/oauth'
+
+GOOGLE_API_KEY = 'AIzaSyAyh8_P92dA1FwVNrX1A7j6s72BmwFoUwQ'
+
+GOOGLE_SCOPE = {
+    'email': 'email',
+    'login': 'https://www.googleapis.com/auth/plus.login'
+}
+
+GOOGLE_API_PEOPLE = 'https://www.googleapis.com/plus/v1/people/me'
+
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

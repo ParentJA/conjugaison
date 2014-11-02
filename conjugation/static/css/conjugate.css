@@ -1,0 +1,72 @@
+.normal-background 
+{
+    background: #FFF;
+}
+
+.progress 
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.item 
+{
+    text-align: center;
+}
+
+.form-control {
+    border-color: #34495E;
+}
+
+.input-group-addon {
+    border-color: #34495E;
+    background-color: #34495E;
+}
+
+.has-success .input-group-addon 
+{
+    color: #FFF;
+    background-color: #2ECC71;
+}
+
+.has-error .input-group-addon
+{
+    color: #FFF;
+    background-color: #E74C3C;
+}
+
+/*@-webkit-keyframes success 
+{
+    from {background: #2ECC71;}
+    to   {background: #FFF;}
+}
+    
+keyframes success 
+{
+    from {background: #2ECC71;}
+    to   {background: #FFF;}
+}
+
+@-webkit-keyframes error 
+{
+    from {background: #E74C3C;}
+    to   {background: #FFF;}
+}
+    
+keyframes error 
+{
+    from {background: #E74C3C;}
+    to   {background: #FFF;}
+}
+
+.success-background 
+{
+    -webkit-animation: success .50s ease-in;
+            animation: success .50s ease-in;
+}
+
+.error-background 
+{
+    -webkit-animation: error .50s ease-in;
+            animation: error .50s ease-in;
+}*/

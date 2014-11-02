@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block base-head %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/conjugate.css">
+{% endblock %}
+
+{% block base-content %}
+    <h1 class="text-center">Conjugate much?</h1>
+    <p class="text-center">
+        Let's see how well you handle some French verbs!
+    </p>
+    <button id="start-button" class="btn btn-inverse btn-md center-block" disabled>Lay 'em on me</button>
+{% endblock %}
+
+{% block base-modals %}
+    <div id="loading-modal" class="modal fade bs-modal-sm">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base-scripts %}
+    <script src="{{ STATIC_URL }}js/jquery.cookie.min.js"></script>
+    <script src="{{ STATIC_URL }}js/assessment.min.js"></script>
+    <script src="{{ STATIC_URL }}js/conjugate.js"></script>
+
+    <script>
+        {% if user.is_authenticated %}
+            this.is_user_authenticated = true;
+        {% endif %}
+    </script>
+{% endblock %}
